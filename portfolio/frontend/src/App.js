@@ -1,9 +1,9 @@
-import Profile from "./PortfolioContianer/Home/Profile";
+import PortfolioContainer from "./PortfolioContianer/PortfolioContainer";
 
 function App() {
   return (
     <div className="App">
-      <Profile />
+      <PortfolioContainer />
     </div>
   );
 }
