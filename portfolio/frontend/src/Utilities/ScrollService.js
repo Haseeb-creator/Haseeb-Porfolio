@@ -1,4 +1,4 @@
-import { TOTAL_SCREEN } from "./CommonUtils";
+import { TOTAL_SCREENS } from "./CommonUtils";
 import { Subject } from 'rxjs'
 
 
@@ -39,36 +39,35 @@ export default class ScrollService {
 				return completelyVisible;
 			default:
 				return false
-
 		}
+	}
 
-		checkCurrentScreenUnderViewport = (event) => {
-			if (!event || object.keys(event).length < 1)
-				return;
-			for (let screen of TOTAL_SCREEN) {
-				let screenFromDOM = document.getElementById(screen.screen_name)
-				if (!screenFromDOM)
-					continue;
+	checkCurrentScreenUnderViewport = (event) => {
+		if (!event || Object.keys(event).length < 1) return;
+		for (let screen of TOTAL_SCREENS) {
+			let screenFromDOM = document.getElementById(screen.screen_name)
+			if (!screenFromDOM)
+				continue;
 
 
-				let fullyVisible = this.isElementInView(screenFromDOM, 'complete')
-				let partiallyVisible = this.isElementInView(screenFromDOM, 'partial')
+			let fullyVisible = this.isElementInView(screenFromDOM, 'complete')
+			let partiallyVisible = this.isElementInView(screenFromDOM, 'partial')
 
-				if (fullyVisible || partiallyVisible) {
-					if (partiallyVisible && !screen.alreadyRendered) {
-						ScrollService.currentScreenFadeIn.next({
-							fadeInScreen: screen.screen_name
-						})
-						screen['alreadyRendered'] = true
-						break
-					}
-					if (fullyVisible) {
-						ScrollService.currentScreenBoardCaster.next({
-							screenInView: screen.screen_name
-						})
-						break
-					}
+			if (fullyVisible || partiallyVisible) {
+				if (partiallyVisible && !screen.alreadyRendered) {
+					ScrollService.currentScreenFadeIn.next({
+						fadeInScreen: screen.screen_name
+					})
+					screen['alreadyRendered'] = true
+					break
 				}
+				if (fullyVisible) {
+					ScrollService.currentScreenBoardCaster.next({
+						screenInView: screen.screen_name
+					})
+					break
+				}
+
 
 
 			}

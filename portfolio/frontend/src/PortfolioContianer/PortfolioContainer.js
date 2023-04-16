@@ -1,11 +1,11 @@
 import React from 'react'
-import { TOTAL_SCREEN } from '../Utilities/CommonUtils'
+import { TOTAL_SCREENS } from '../Utilities/CommonUtils'
 
 function PortfolioContainer() {
 
 	const mapAllScreen = () => {
 		return (
-			TOTAL_SCREEN.map((screen) => {
+			TOTAL_SCREENS.map((screen) => {
 				return (
 					(screen.component) ? <screen.component screenName={screen.screen_name} key={screen.screen_name} id={screen.screen_name} /> : <div key={screen.screen_name}></div>)
 			})
