@@ -1,3 +1,7 @@
+:root {
+	--dark-orange: #FF5823;
+}
+
 .profile-container {
 	display: flex;
 	align-items: center;
@@ -32,7 +36,7 @@
 }
 
 .primary-text {
-	color: (--white)
+	color: var(--white)
 }
 
 .highlighted-text {

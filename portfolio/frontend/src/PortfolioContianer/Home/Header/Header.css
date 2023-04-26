@@ -1,3 +1,7 @@
+:root {
+	--dark-orange: #FF5823
+}
+
 .header-container {
 	display: flex;
 	justify-content: center;
@@ -42,7 +46,7 @@
 }
 
 .selected-header-option {
-	color: #ff5823
+	color: var(--dark-orange);
 }
 
 
@@ -90,9 +94,6 @@
 
 	}
 
-	.header-option {
-		color: var(--white);
-	}
 
 	.header-hamburger-bars {
 		font-size: 30px;
