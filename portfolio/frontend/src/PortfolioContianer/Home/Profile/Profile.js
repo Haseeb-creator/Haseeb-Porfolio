@@ -1,5 +1,6 @@
 import React from 'react'
 import Typical from "react-typical"
+import ScrollService from '../../../Utilities/ScrollService'
 import './Profile.css'
 
 const Profile = () => {
@@ -53,7 +54,9 @@ const Profile = () => {
 						</span>
 					</div>
 					<div className="profile-options">
-						<button className="btn primary-btn">Hire Me</button>
+						<button className="btn primary-btn"
+							onClick={() => ScrollService.scrollHandler.scrollToHireMe()}
+						>Hire Me</button>
 						<a href="Haseeb_Resume.pdf" download={'Haseeb_Resume.pdf'} >
 							<button className="btn highlighted-btn">Get Resume</button>
 						</a>
