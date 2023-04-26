@@ -10,8 +10,10 @@ export default function AboutMe(props) {
 		if (screen.fadeInScreen !== props.id) return;
 		Animations.animations.fadeInScreen(props.id);
 	};
+	// eslint-disable-next-line
 	const fadeInSubscription =
 		ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
+
 
 	const SCREEN_CONSTSANTS = {
 		description:
@@ -38,7 +40,7 @@ export default function AboutMe(props) {
 	};
 
 	return (
-		<div className="about-me-container screen-container " id={props.id || ""}>
+		<div className="about-me-container screen-container fade-in" id={props.id || ""}>
 			<div className="about-me-parent">
 				<ScreenHeading title={'About Me'} subHeading={'why Choose Me?'} />
 				<div className="about-me-card">

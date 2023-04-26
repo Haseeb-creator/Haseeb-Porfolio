@@ -4,9 +4,9 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import './Home.css'
 
-const Home = () => {
+const Home = (props) => {
 	return (
-		<div className="home-container">
+		<div className="home-container" id={props.id || ""}>
 			<Header />
 			<Profile />
 			<Footer />

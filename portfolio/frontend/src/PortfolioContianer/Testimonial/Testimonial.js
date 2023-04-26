@@ -16,7 +16,7 @@ export default function Testimonial(props) {
 		if (screen.fadeInScreen !== props.id) return;
 		Animations.animations.fadeInScreen(props.id);
 	};
-
+	// eslint-disable-next-line
 	const fadeInSubscription =
 		ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 	const options = {
@@ -43,7 +43,7 @@ export default function Testimonial(props) {
 	return (
 		<div>
 			<ScreenHeading title={'Testimonial'} subHeading={'What My Client Say About Me'} />
-			<section className='testimonial-section' id={props.id || ''}>
+			<section className='testimonial-section fade-in' id={props.id || ''}>
 				<div className="container">
 					<div className="row">
 						<OwlCarousel
@@ -86,7 +86,6 @@ export default function Testimonial(props) {
 									</div>
 								</div>
 							</div>
-
 							<div className="col-lg-12">
 								<div className="testi-item">
 									<div className="testi-comment">
@@ -192,12 +191,82 @@ export default function Testimonial(props) {
 									</div>
 								</div>
 							</div>
+							<div className="col-lg-12">
+								<div className="testi-item">
+									<div className="testi-comment">
+										<p>
+											<i className="fa fa-quote-left" />
+											When he delivered my job, my head spinned, it was so nice
+											and he implemented every functionality i requested for.
+											Thank you.
+											<i className="fa fa-quote-right" />
+										</p>
+										<ul className="stars list-unstyled">
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star-half-alt" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+										</ul>
+									</div>
+									<div className="client-info">
+										<img src={lady} alt="no internet connection"></img>
+										<h5>Daisy Dominic</h5>
+										<p>CEO InansGlobal</p>
+									</div>
+								</div>
+							</div>
+							<div className="col-lg-12">
+								<div className="testi-item">
+									<div className="testi-comment">
+										<p>
+											<i className="fa fa-quote-left" />
+											This guy is incredibly awesome, I hired him and when He
+											delivered, I honestly fell in love with the project. He is
+											indeed a great guy,
+											<i className="fa fa-quote-right" />
+										</p>
+										<ul className="stars list-unstyled">
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+											<li>
+												<i className="fa fa-star-half-alt" />
+											</li>
+											<li>
+												<i className="fa fa-star" />
+											</li>
+										</ul>
+									</div>
+									<div className="client-info">
+										<img src={man} alt="no internet connection"></img>
+										<h5>John Smith</h5>
+										<p>Bnaker</p>
+									</div>
+								</div>
+							</div>
 						</OwlCarousel>
 					</div>
 				</div>
 			</section>
 			<div className="footer-image">
-				<img src={shape} alt="Photo not responding" />
+				<img src={shape} alt="not responding" />
 			</div>
 		</div>
 	)

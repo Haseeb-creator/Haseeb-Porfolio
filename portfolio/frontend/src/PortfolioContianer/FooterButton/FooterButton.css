@@ -2,15 +2,42 @@
 	position: absolute;
 	text-align: center;
 	right: 0;
-	margin-right: 9px;
+	margin-right: 15px;
 	overflow: hidden;
 	flex-direction: column;
-	margin-top: -45px;
+	margin-top: 5px;
 	z-index: 100;
 	cursor: pointer;
 }
 
-@media only screen and (min-width: 475px) {
+.main-footer-container {
+	position: absolute;
+	justify-content: center;
+	margin: auto;
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	overflow: hidden;
+	flex-direction: column;
+	z-index: 100;
+}
+
+.main-footer-container a {
+	font-size: 1.4rem;
+	color: rgb(66, 67, 67);
+	margin: 7px;
+
+}
+
+@media only screen and (max-width: 550px) {
+	.scroll-container {
+		margin-right: 10px;
+		margin-top: -60px;
+	}
+}
+
+
+@media only screen and (min-width: 550px) {
 	.scroll-container {
 		margin-bottom: 10px;
 	}

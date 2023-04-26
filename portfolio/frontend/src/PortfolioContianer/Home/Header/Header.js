@@ -20,7 +20,7 @@ export default function Header() {
 			return;
 	}
 
-	let currentScreenSubscription = ScrollService.currentScreenBoardCaster.subscribe(updateCurrentScreen)
+	let currentScreenSubscription = ScrollService.currentScreenBroadcaster.subscribe(updateCurrentScreen)
 
 	const getHeaderOptions = () => {
 		return TOTAL_SCREENS.map((screen, i) => (
