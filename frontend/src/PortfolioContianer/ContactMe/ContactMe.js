@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Typical from "react-typical";
-import axios from "axios";
 import { toast } from "react-toastify";
 import imgBack from "../../img/ContactImg/mailz.jpeg";
 import load1 from "../../img/ContactImg/load2.gif"
@@ -8,6 +7,7 @@ import ScreenHeading from '../../Utilities/ScreenHeading/ScreenHeading';
 import ScrollService from '../../Utilities/ScrollService';
 import Animations from '../../Utilities/Animation';
 import FooterButton from '../FooterButton/FooterButton';
+import emailjs from '@emailjs/browser';
 import "./ContactMe.css";
 
 export default function ContactMe(props) {
@@ -38,7 +38,7 @@ export default function ContactMe(props) {
 	console.log(name);
 
 
-	const submitForm = async (e) => {
+	/* const submitForm = async (e) => {
 		e.preventDefault();
 		try {
 			let data = {
@@ -63,6 +63,42 @@ export default function ContactMe(props) {
 			}
 		} catch (error) {
 			console.log(error);
+		}
+	};
+	*/
+	// assuming top-level await for brevity
+
+	const form = useRef();
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+		setBool(true);
+
+		if (name.length === 0 || email.length === 0 || message.length === 0) {
+			setBanner("Please Fill All The Fields!");
+			toast.error("Please Fill All The Fields!");
+			setBool(false);
+		}
+		else {
+			emailjs.sendForm('service_g30sn6v', 'template_0y954fj', form.current, 'qJoscxKOX4w1Ce771')
+				.then((result) => {
+					if (result.text === 'OK') {
+						setBanner("Thank You For Contacting Haseeb!.");
+						toast.success("Thank You For Contacting Haseeb!.");
+						setBool(false);
+						setName("");
+						setEmail("");
+						setMessage("");
+					}
+					console.log(result.text);
+				}, (error) => {
+					if (name.length === 0 || email.length === 0 || message.length === 0) {
+						setBanner("Please Fill All The Fields!");
+						toast.error("Please Fill All The Fields!");
+						setBool(false);
+					}
+					console.log(error.text);
+				});
 		}
 	};
 
@@ -95,16 +131,16 @@ export default function ContactMe(props) {
 						<h4>Send Your Email Here!</h4>
 						<img src={imgBack} alt=" not found" />
 					</div>
-					<form onSubmit={submitForm}>
+					<form ref={form} onSubmit={sendEmail}>
 						<p>{banner}</p>
 						<label htmlFor="name">Name</label>
-						<input type="text" onChange={handleName} value={name} />
+						<input type="text" name="user_name" onChange={handleName} value={name} />
 
 						<label htmlFor="email">Email</label>
-						<input type="email" onChange={handleEmail} value={email} />
+						<input type="email" name="user_mail" onChange={handleEmail} value={email} />
 
 						<label htmlFor="message">Message</label>
-						<textarea type="text" onChange={handleMessage} value={message} />
+						<textarea type="text" name="message" onChange={handleMessage} value={message} />
 
 						<div className="send-btn">
 							<button type="submit">
